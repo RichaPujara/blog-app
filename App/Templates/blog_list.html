@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog List</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body class="container">
+    <div class="container">
+      <header>
+        <nav
+          class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-info"
+          style="display: block"
+        >
+          <div class="container-fluid">
+            <div>
+              <a class="navbar-brand text-white" href="/">Home</a>
+              <a class="navbar-brand text-white" href="/blogs"
+                >Read All Blogs</a
+              >
+              <a class="navbar-brand text-white" href="/blogs/new"
+                >Create New Blog</a
+              >
+            </div>
+            <div>
+              <form class="d-flex" role="search" method="POST" action="/">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search Tags"
+                  aria-label="Search"
+                  name="search"
+                  id="search"
+                />
+                <button
+                  class="btn btn-outline-white"
+                  style="margin-left: 0.75rem"
+                  type="submit"
+                  disabled
+                >
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main style="margin-top: 10%; flex-direction: column">
+        <h1 class="text-info text-center">All Blogs</h1>
+        <div class="container">
+          <div class="row row-cols-3">
+            {% for blog in blogs %}
+            <div class="card col" style="margin: 0.5rem">
+              <div class="text-info card-title h4">
+                <a
+                  href="/blogs/{{blogs.index(blog)}}"
+                  style="text-decoration: none"
+                  class="text-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-reset"
+                  >{{blog['title']}}
+                </a>
+              </div>
+              <div class="metadata card-subtitle">
+                <p>by: {{blog['author']}} on: {{blog['created_date']}}</p>
+              </div>
+              <div class="tags card-body">
+                {% if blog['tags'].__class__.__name__ == 'list': %}
+                <h5>Tags:</h5>
+                <ul>
+                  {% for tag in blog['tags']: %}
+                  <li>{{tag}}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </main>
+      <footer class="container" style="display: block">
+        <div class="fixed-bottom text-center bg-info text-white">
+          © copyright 2023
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog{{blog_index}}</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+  <body class="container">
+    <div class="container">
+      <header>
+        <nav
+          class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-info"
+          style="display: block"
+        >
+          <div class="container-fluid">
+            <div>
+              <a class="navbar-brand text-white" href="/">Home</a>
+              <a class="navbar-brand text-white" href="/blogs"
+                >Read All Blogs</a
+              >
+              <a class="navbar-brand text-white" href="/blogs/new"
+                >Create New Blog</a
+              >
+            </div>
+            <div>
+              <!-- Search functionality is currently not working. It is only for aesthetic purpose now.-->
+              <form class="d-flex" role="search" method="POST" action="/">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search Tags"
+                  aria-label="Search"
+                  name="search"
+                  id="search"
+                />
+                <button
+                  class="btn btn-outline-white"
+                  style="margin-left: 0.75rem"
+                  type="submit"
+                  disabled
+                >
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main
+        style="
+          margin-top: 10%;
+          flex-direction: column;
+          display: block;
+          height: 80%;
+        "
+      >
+        <h1 class="text-info text-center justify-content-center">
+          {{blog['title']}}
+        </h1>
+        <h6 class="text-center">
+          by:
+          <span class="text-info text-center justify-content-center fs-lg"
+            >{{blog['author']}}</span
+          ><br />
+          created on
+          <span class="text-info text-center justify-content-center fs-lg"
+            >{{blog['created_date']}}</span
+          >
+        </h6>
+        <h6 class="text-center">
+          Tags: {% for tag in blog['tags']:%}{{tag}} {% endfor %}
+        </h6>
+        <br />
+
+        <p>{{blog['blogpost']}}</p>
+        <br />
+        <!-- Like and Comment functinality is for aesthetic purposes only. -->
+        <div>
+          <div class="text-left">
+            <button
+              class="bg-primary"
+              style="color: white"
+              tooltip="Like and Comment functinality is for aesthetic purposes only."
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-title="Like functinality is for aesthetic purposes only."
+            >
+              <!-- <a
+                href="/blogs/{{blog_index}}/like"
+                style="color: azure"
+                class="link-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-reset"
+                disabled
+                > -->
+              <i class="fa-regular fa-thumbs-up" style="color: white"></i>
+              Like {{blog['likes']}}
+              <!-- </a> -->
+            </button>
+            <button
+              class="bg-success"
+              style="color: white"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              data-bs-title="Comment functinality is for aesthetic purposes only."
+              disabled
+            >
+              <!-- <a
+                href="/blogs/{{blog_index}}/comment"
+                style="color: azure"
+                class="link-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-reset"
+                > -->
+              <i class="fa-regular fa-comment" style="color: white"></i>
+              Comment {{blog['comments_count']}}
+              <!-- </a> -->
+            </button>
+          </div>
+          <div class="text-right">
+            <button class="bg-info" style="color: white">
+              <a
+                href="/blogs/{{blog_index}}/edit"
+                style="color: azure"
+                class="link-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-reset"
+                ><i class="fa fa-edit"></i>Edit</a
+              >
+            </button>
+            <button class="bg-danger" style="color: white">
+              <a
+                href="/blogs/{{blog_index}}/delete"
+                style="color: azure"
+                class="link-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-reset"
+                ><i class="fa fa-trash"></i>Delete</a
+              >
+            </button>
+          </div>
+        </div>
+      </main>
+      <footer class="container" style="display: block">
+        <div class="fixed-bottom text-center bg-info text-white">
+          © copyright 2023
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

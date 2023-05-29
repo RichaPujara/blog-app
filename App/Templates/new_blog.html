@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Blog</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <style>
+      main {
+        display: block;
+        height: 80%;
+      }
+      .body-class {
+        position: relative;
+        height: 80vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .body-class::before {
+        content: "";
+        background-image: url("../static/img/blogging.jpg");
+        background-size: cover;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.25;
+      }
+    </style>
+  </head>
+
+  <body class="container">
+    <div class="container">
+      <header>
+        <nav
+          class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-info"
+          style="display: block"
+        >
+          <div class="container-fluid">
+            <div>
+              <a class="navbar-brand text-white" href="/">Home</a>
+              <a class="navbar-brand text-white" href="/blogs"
+                >Read All Blogs</a
+              >
+              <a class="navbar-brand text-white" href="/blogs/new"
+                >Create New Blog</a
+              >
+            </div>
+            <div>
+              <form class="d-flex" role="search" method="POST" action="/">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search Tags"
+                  aria-label="Search"
+                  name="search"
+                  id="search"
+                />
+                <button
+                  class="btn btn-outline-white"
+                  style="margin-left: 0.75rem"
+                  type="submit"
+                  disabled
+                >
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main style="margin: 10% 0; flex-direction: column; z-index: index 1">
+        <div>
+          <!-- {%print(all_tags)%} -->
+          <h1
+            class="text-info text-center justify-content-center"
+            style="opacity: unset"
+          >
+            New Blog form
+          </h1>
+          <form method="POST" action="/blogs/new">
+            <div class="form-group">
+              <label
+                for="author"
+                class="text-info"
+                style="font-size: larger; font-weight: bolder"
+                >Author Name:</label
+              >
+              <input
+                type="text"
+                id="author"
+                name="author"
+                class="form-control"
+                required
+              />
+              <label
+                for="tags"
+                class="text-info"
+                style="font-size: larger; font-weight: bolder"
+                >Tags:
+              </label>
+              <input
+                type="text"
+                id="tags"
+                name="tags"
+                class="form-control"
+                placeholder="Please add space separated tags"
+                required
+              />
+            </div>
+            <label
+              for="title"
+              class="text-info"
+              style="font-size: larger; font-weight: bolder"
+              >Title of Blog:</label
+            >
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="text-info form-control"
+              style="font-size: larger; font-weight: bolder"
+              required
+            />
+            <label
+              for="blogpost"
+              class="text-info"
+              style="font-size: larger; font-weight: bolder"
+              >Details:</label
+            >
+            <textarea
+              id="blogpost"
+              name="blogpost"
+              class="form-control"
+              rows="8"
+              required
+            ></textarea>
+
+            <button type="submit" class="btn-info btn" style="color: white">
+              Submit
+            </button>
+            <button type="reset" class="btn-info btn" style="color: white">
+              Clear form
+            </button>
+          </form>
+        </div>
+      </main>
+      <footer class="container" style="display: block">
+        <div class="fixed-bottom text-center bg-info text-white">
+          © copyright 2023
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

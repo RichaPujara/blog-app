@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      .body-class {
+        position: relative;
+        height: 80vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .body-class::before {
+        content: "";
+        background-image: url("../static/img/blogging.jpg");
+        background-size: cover;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        opacity: 0.25;
+      }
+    </style>
+  </head>
+  <body class="container">
+    <div class="container">
+      <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+          <div class="container-fluid">
+            <div>
+              <a
+                style="color: #14a2b8; font-weight: bold"
+                class="navbar-brand link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-reset fw-bold"
+                href="/"
+                >Home</a
+              >
+              <a
+                style="color: #14a2b8; font-weight: bold"
+                class="navbar-brand link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-reset"
+                href="/blogs"
+                >Read Blogs</a
+              >
+            </div>
+            <div>
+              <form class="d-flex" role="search" method="POST" action="/">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search Tags"
+                  aria-label="Search"
+                  name="search"
+                  id="search"
+                />
+                <button class="btn btn-outline-success" type="submit" disabled>
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <main style="margin: auto; flex-direction: column">
+        <div class="body-class">
+          <h1
+            class="text-info text-center justify-content-center"
+            style="opacity: unset"
+          >
+            Welcome to Our Blogging Platform!
+          </h1>
+          <h4 class="text-center justify-content-center">
+            Our platform offers authentication and authorisation for our users.
+            Our goal is to help authors easily create, update, and delete their
+            blog posts, while making it simple for all users to read and
+            interact with the content.
+          </h4>
+        </div>
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <button style="color: white" class="btn btn-info">
+            <a
+              href="/blogs/new"
+              style="color: azure"
+              class="link-emphasis link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover text-reset"
+              >Get Started</a
+            >
+          </button>
+        </div>
+      </main>
+
+      <footer class="container" style="display: block">
+        <div class="fixed-bottom text-center">© copyright 2023</div>
+      </footer>
+    </div>
+  </body>
+</html>
